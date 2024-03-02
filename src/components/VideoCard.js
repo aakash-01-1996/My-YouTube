@@ -1,8 +1,6 @@
 import React from "react";
 
 const VideoCard = ({ info }) => {
-  console.log(info);
-
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
 
@@ -12,9 +10,10 @@ const VideoCard = ({ info }) => {
       <ul>
         <li className="font-bold py-2">{title}</li>
         <li className="font-semibold">{channelTitle}</li>
-        <li className="font-semibold">{statistics.viewCount} views</li>
+        <li className="font-light">{statistics.viewCount}views</li>
       </ul>
     </div>
   );
 };
+
 export default VideoCard;
