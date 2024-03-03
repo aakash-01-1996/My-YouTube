@@ -5,11 +5,10 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
-    //API call
-    console.log(searchQuery);
-
     // API call after every keypress
     // but if diff b/w 2 API calls <200ms : Decline API
 
@@ -20,10 +19,23 @@ const Header = () => {
     };
   }, [searchQuery]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowSuggestions(false);
+    };
+
+    document.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const getSearchSuggestions = async () => {
+    console.log("API Call: " + searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json);
+    setSuggestions(json[1]);
   };
 
   const dispatch = useDispatch();
@@ -51,15 +63,30 @@ const Header = () => {
       </div>
 
       <div className="col-span-10 px-10">
-        <input
-          className=" w-1/2 border border-gray-400 p-2 rounded-l-full"
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="border border-gray-400 px-5 py-2 rounded-r-full bg-gray-50">
-          🔍
-        </button>
+        <div>
+          <input
+            className="px-5 py-2 w-1/2 border border-gray-400 p-2 rounded-l-full"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
+          />
+          <button className="border border-gray-400 px-5 py-2 rounded-r-full bg-gray-50">
+            🔍
+          </button>
+        </div>
+        {showSuggestions && (
+          <div className="fixed bg-white py-2 px-5 w-[37.55rem] shadow-lg rounded-lg">
+            <ul>
+              {suggestions.map((s) => (
+                <li key={s} className="px-1 py-1 hover:bg-gray-100">
+                  🔍 {s}{" "}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className=" flex col-span-1 justify-evenly">
