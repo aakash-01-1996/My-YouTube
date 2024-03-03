@@ -1,0 +1,13 @@
+# Debouncing
+    - Typing slow - 200ms
+    - Typing Fast - 30ms
+
+
+#Performance 
+    - iPhone Pro Max = 14 * 1000 = 14000
+    - with Debouncing= 3 API * 1000 = 3000
+
+    Debouncing with 200ms 
+        => if diff b/w 2 keyStrokes is less than 200ms -> Not call API /decline API call
+        => if diff b/w 2 keyStrokes is more than 200ms -> make API call
+
