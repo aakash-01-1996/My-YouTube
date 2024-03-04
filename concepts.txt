@@ -11,3 +11,29 @@
         => if diff b/w 2 keyStrokes is less than 200ms -> Not call API /decline API call
         => if diff b/w 2 keyStrokes is more than 200ms -> make API call
 
+
+
+# N level Nested Comments.. 
+# LRU Cache
+
+
+# Pagination
+
+#Live Chat >>>>>>>> Infinite Scroll >>>> Pagination
+
+
+
+# challenges of Live Chat
+ - To get Data Live :: Data Layer 
+ - How to update the UI on the page :: UI Layer
+ - Pushing data constantly is bit challenging in this process..
+ - Mock Data can not be updated
+ - Heavy Data will make the Page Slow... 
+
+
+ # For Live Data: 
+ - Web Sockets (2 way connections) : basically makes a Handshake .. UI & Server 
+    => When we need Data Instantly we use Web Sockets..
+ - API Polling : Data from from Server to UI 
+    => When we need Data not so Instantly we use API Polling..
+  

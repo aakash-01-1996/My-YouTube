@@ -1,5 +1,16 @@
 import React from "react";
 
+const formatViewCount = (count) => {
+  if (count >= 1000000) {
+    return `${(count / 1000000).toFixed(1)}M views`;
+  } else if (count >= 1000) {
+    return `${(count / 1000).toFixed(1)}K views`;
+  } else {
+    return `${count} views`;
+  }
+};
+
+
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
@@ -10,7 +21,7 @@ const VideoCard = ({ info }) => {
       <ul>
         <li className="font-bold py-2">{title}</li>
         <li className="font-semibold">{channelTitle}</li>
-        <li className="font-light">{statistics.viewCount}views</li>
+        <li className="font-light">{formatViewCount(statistics.viewCount)}</li>
       </ul>
     </div>
   );
@@ -18,7 +29,7 @@ const VideoCard = ({ info }) => {
 
 export const AdVideoCard = ({ info }) => {
   return (
-    <div className="border border-red-900 p-1 m-1 cursor-pointer">
+    <div className="border border-red-900 p-1 m-1 cursor-pointer rounded-md">
       <VideoCard info={info} />
     </div>
   );
