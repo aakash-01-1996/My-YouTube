@@ -1,3 +1,6 @@
+# <React.StrictMode> => It calls the component twice... jsut to make sure its calling properly... Only happens in Dev
+
+
 # Debouncing
     - Typing slow - 200ms
     - Typing Fast - 30ms
@@ -15,8 +18,6 @@
 
 # N level Nested Comments.. 
 # LRU Cache
-
-
 # Pagination
 
 #Live Chat >>>>>>>> Infinite Scroll >>>> Pagination
@@ -37,3 +38,6 @@
  - API Polling : Data from from Server to UI 
     => When we need Data not so Instantly we use API Polling..
   
+
+# useMemo: It's a React Hook that let's you cache the result of calc between re-renders.
+ - Every time i put some value it re-renders.. 
