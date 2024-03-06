@@ -41,3 +41,8 @@
 
 # useMemo: It's a React Hook that let's you cache the result of calc between re-renders.
  - Every time i put some value it re-renders.. 
+
+# useRef: is a React Hook that lets you reference value thats not needed for rendering..
+    - Every time it renders it remembers the previous values..
+
+# useCallbacks: 
